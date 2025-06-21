@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Prompt - Arte Onírica</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 600px;
+      margin: 30px auto;
+      background-color: #f0f0f0;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    select, textarea, button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    #result {
+      white-space: pre-wrap;
+      background: #fff;
+      padding: 15px;
+      border-radius: 5px;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h2>Gerador de Prompt - Arte Onírica Aquarela</h2>
+
+  <label>Personagem:</label>
+  <select id="character">
+    <option>Gato</option>
+    <option>Raposa</option>
+    <option>Coruja</option>
+    <option>Coelho</option>
+    <option>Dragão</option>
+    <option>Peixe Koi</option>
+    <option>Veado</option>
+    <option>Sereia</option>
+    <option>Borboleta</option>
+    <option>Cavalo dos Sonhos</option>
+  </select>
+
+  <label>Cenário:</label>
+  <select id="scene">
+    <option>Floresta Mágica</option>
+    <option>Mar de Constelações</option>
+    <option>Céu Estrelado com Nuvens</option>
+    <option>Campo de Flores Flutuantes</option>
+    <option>Montanhas Flutuantes</option>
+    <option>Fundo Aquático com Luas Submersas</option>
+    <option>Neblina Cósmica</option>
+    <option>Jardim Etéreo com Plantas que Brilham</option>
+    <option>Planície com Aurora Boreal</option>
+  </select>
+
+  <label>Paleta de cores:</label>
+  <select id="palette">
+    <option>Azul + Roxo + Dourado</option>
+    <option>Lilás + Rosa + Ouro</option>
+    <option>Azul Petróleo + Teal + Prata</option>
+    <option>Roxo Profundo + Cobalto + Branco Perolado</option>
+    <option>Rosa Antigo + Azul Noite + Ouro</option>
+    <option>Verde Esmeralda + Azul Céu + Dourado</option>
+    <option>Azul Celeste + Laranja Queimado + Dourado</option>
+    <option>Cinza Prateado + Azul Noite + Lilás</option>
+    <option>Azul Claro + Verde Água + Dourado</option>
+    <option>Lavanda + Violeta + Dourado</option>
+  </select>
+
+  <label>Elementos Extras (opcional):</label>
+  <textarea id="extras" rows="2" placeholder="Ex: ondas cósmicas, estrelas cadentes..."></textarea>
+
+  <button onclick="generatePrompt()">Gerar Prompt</button>
+
+  <div id="result"></div>
+
+  <script>
+    function generatePrompt() {
+      const character = document.getElementById('character').value;
+      const scene = document.getElementById('scene').value;
+      const palette = document.getElementById('palette').value;
+      const extras = document.getElementById('extras').value;
+
+      const prompt = `Fantasy illustration in an ethereal watercolor and ink style, inspired by Art Nouveau and Japanese fantasy art. The scene features a ${character.toLowerCase()} resting in a dreamlike environment of ${scene.toLowerCase()}. Soft, flowing textures with layered watercolor effects in shades of ${palette.toLowerCase()}, accented with delicate gold ink lines and celestial motifs (moons, stars, bubbles, or constellations). The composition blends surrealism and nature, with a luminous, mystical mood. The background contains abstract elements like ${extras || 'cosmic mist, waves, or glowing light'}. Fine, elegant linework with shimmering golden details outlining forms and adding texture. High contrast between dark space and light highlights. Maintain a poetic, dreamlike, and magical atmosphere.`;
+
+      document.getElementById('result').innerText = prompt;
+    }
+  </script>
+</body>
+</html>
