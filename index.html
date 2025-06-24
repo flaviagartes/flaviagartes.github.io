@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,10 +10,12 @@
       font-family: Arial, sans-serif;
       max-width: 600px;
       margin: 30px auto;
-      background-color: #f0f0f0;
+      background: linear-gradient(135deg, #ffe6f0, #e0ccff);
       padding: 20px;
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      color: #4b004b;
+      text-align: center;
     }
     select, textarea, button {
       width: 100%;
@@ -22,12 +25,15 @@
       border: 1px solid #ccc;
     }
     button {
-      background-color: #4CAF50;
-      color: white;
+      background-color: #ffccf2;
+      color: #4b004b;
       cursor: pointer;
+      border: none;
+      font-size: 16px;
+      transition: 0.3s;
     }
     button:hover {
-      background-color: #45a049;
+      background-color: #ff99e6;
     }
     #result {
       white-space: pre-wrap;
@@ -36,6 +42,11 @@
       border-radius: 5px;
       margin-top: 20px;
       border: 1px solid #ccc;
+    }
+    #mensagem {
+      color: #4b004b;
+      font-style: italic;
+      margin-top: 10px;
     }
   </style>
 </head>
@@ -90,6 +101,11 @@
 
   <div id="result"></div>
 
+  <!-- Início: Botão de Copiar -->
+  <button onclick="copiarPrompt()">📋 Copiar Prompt</button>
+  <p id="mensagem"></p>
+  <!-- Fim: Botão de Copiar -->
+
   <script>
     function generatePrompt() {
       const character = document.getElementById('character').value;
@@ -101,6 +117,17 @@
 
       document.getElementById('result').innerText = prompt;
     }
+
+    // Início: Função do Botão de Copiar
+    function copiarPrompt() {
+      var promptTexto = document.getElementById("result").innerText;
+      navigator.clipboard.writeText(promptTexto).then(function() {
+        document.getElementById("mensagem").innerText = "✅ Copiado com sucesso!";
+      }, function(err) {
+        document.getElementById("mensagem").innerText = "❌ Erro ao copiar!";
+      });
+    }
+    // Fim: Função do Botão de Copiar
   </script>
 </body>
 </html>
